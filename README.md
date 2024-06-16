@@ -21,7 +21,7 @@ npm install -g express-ease
 To create a new Express application, run the following command:
 
 ```bash
-npx express-ease create my-express-app
+npx express-ease my-express-app
 ```
 
 This command will prompt you to choose between JavaScript and TypeScript templates and then set up a basic Express application in the `my-express-app` directory.
