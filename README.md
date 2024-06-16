@@ -10,10 +10,10 @@ Express Ease is a package that allows users to quickly set up an Express applica
 
 ## Installation
 
-You can install EasyExpressApp globally to use it from the command line:
+You can install Express Ease globally to use it from the command line:
 
 ```bash
-npm install -g easy-express-app
+npm install -g express-ease
 ```
 
 ## Usage
@@ -21,7 +21,7 @@ npm install -g easy-express-app
 To create a new Express application, run the following command:
 
 ```bash
-npx easy-express-app create my-express-app
+npx express-ease create my-express-app
 ```
 
 This command will prompt you to choose between JavaScript and TypeScript templates and then set up a basic Express application in the `my-express-app` directory.
@@ -53,8 +53,13 @@ my-express-app/
 │   │   └── ...
 │   ├── routes/
 │   │   └── ...
+│   ├── middlewares/
+│   │   └── ...
+│   ├── utils/
+│   │   └── utils.js (or utils.ts for TypeScript)
+│   │   └── ...
 │   ├── app.js (or app.ts for TypeScript)
-│   └── server.js (or index.ts for TypeScript)
+│   └── server.js (or server.ts for TypeScript)
 ├── .gitignore
 ├── package.json
 └── README.md
