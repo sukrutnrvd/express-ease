@@ -1,7 +1,3 @@
-Sure, here is the updated `README.md` file incorporating the new help feature:
-
----
-
 # Express Ease
 
 Express Ease is a package that allows users to quickly set up an Express application using either JavaScript or TypeScript. It includes built-in templates for both languages and comes pre-configured with essential features like testing and a ready-to-use build environment.
