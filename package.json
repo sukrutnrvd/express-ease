@@ -29,6 +29,11 @@
     "command-line-usage": "^7.0.1",
     "inquirer": "^8.0.0"
   },
+  "repository": {
+    "directory": "express-ease",
+    "type": "git",
+    "url": "https://github.com/Hugo0o0/express-ease.git"
+  },
   "devDependencies": {
     "@types/command-line-usage": "^5.0.4",
     "@types/inquirer": "^9.0.7",
