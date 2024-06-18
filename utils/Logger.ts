@@ -7,6 +7,9 @@ class Logger {
   error(message: string) {
     console.error(chalk.red(message));
   }
+  message(message: string) {
+    console.log(chalk.green(message));
+  }
 }
 
 export default new Logger();

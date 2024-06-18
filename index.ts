@@ -1,45 +1,40 @@
 #!/usr/bin/env node
-import inquirer, { QuestionCollection } from "inquirer";
-import fs from "fs";
+import inquirer from "inquirer";
+import {
+  argsOptions,
+  fullSetupPrompQuestions,
+  sections,
+} from "@contants/constants";
+import commandLineArgs from "command-line-args";
+import commandLineUsage from "command-line-usage";
+import Logger from "@utils/Logger";
 
-const templates = fs.readdirSync(`${__dirname}/templates`);
+const argsResult = commandLineArgs(argsOptions);
+const usage = commandLineUsage(sections);
 
-const questions: QuestionCollection = [
-  {
-    type: "list",
-    name: "language",
-    message: "Which language do you want to use?",
-    choices: templates,
-  },
-  {
-    type: "input",
-    name: "projectName",
-    message: "Enter project name",
-    validate: (name: string) => {
-      const validNameRegex = /^[a-z0-9-_]{3,50}$/;
+const logHelpCommand = () => {
+  Logger.message(usage);
+};
 
-      const invalidCharacters = /[<>:"/\\|?*\x00-\x1F]/;
-
-      if (
-        !name ||
-        name.trim() !== name ||
-        !validNameRegex.test(name) ||
-        invalidCharacters.test(name)
-      ) {
-        return false;
-      }
-
-      return true;
-    },
-  },
-];
-
-inquirer
-  .prompt(questions)
-  .then(async (answers) => {
+if (argsResult.help) {
+  logHelpCommand();
+  process.exit(0);
+} else if (argsResult.template && argsResult.name) {
+  (async () => {
     const { default: template } = await import(
-      `${__dirname}/templates/${answers.language}/index`
+      `${__dirname}/templates/${argsResult.template}/index`
     );
-    template(answers.projectName, answers.language);
-  })
-  .catch((error) => console.error(error));
+    template(argsResult.name, argsResult.template);
+  })();
+} else {
+  inquirer
+    .prompt(fullSetupPrompQuestions)
+    .then(async (answers) => {
+      const { default: template } = await import(
+        `${__dirname}/templates/${answers.language}/index`
+      );
+
+      template(answers.projectName, answers.language);
+    })
+    .catch((error) => console.error(error));
+}
