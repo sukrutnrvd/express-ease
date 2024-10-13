@@ -1,6 +1,6 @@
 {
   "name": "express-ease",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Create restful api project out of the box",
   "main": "dist/index.js",
   "author": "sukrutnrvd",
@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "chalk": "4.1.2",
+    "command-line-args": "^6.0.0",
     "command-line-usage": "^7.0.1",
     "inquirer": "^8.0.0"
   },
